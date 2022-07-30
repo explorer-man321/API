@@ -1,12 +1,16 @@
 const mysql = require("mysql");
 const bodyparser = require("body-parser");
 const express = require("express");
+const cors = require("cors");
 
 const app = express();
 const port = process.env.port || 5000;
 
 app.use(bodyparser.json());
 app.use(bodyparser.urlencoded({ extended: false }));
+app.use(cors({
+    origin: "http://127.0.0.1"
+}))
 
 const poolconnection = mysql.createPool({
     host: 'localhost',
@@ -26,6 +30,4 @@ app.get('/getquestion/:id', (req, res) => {
     })
 })
 
-app.listen(port, () => {
-    console.log(`${port}`);
-})
+app.listen(port)
