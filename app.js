@@ -7,9 +7,9 @@ const app = express();
 const port = process.env.port || 5000;
 
 app.use(bodyparser.json());
-app.use(bodyparser.urlencoded({ extended: false }));
+app.use(bodyparser.urlencoded({ extended: false }));    
 app.use(cors({
-    origin: "http://127.0.0.1"
+    origin: "http://127.0.0.1:5500"
 }))
 
 const poolconnection = mysql.createPool({
@@ -19,10 +19,10 @@ const poolconnection = mysql.createPool({
     database: 'question_db'
 });
 
-app.get('/getquestion/:id', (req, res) => {
+app.get('', (req, res) => {
     poolconnection.getConnection((err, connection) => {
         if (err) throw err;
-        let sql = `SELECT question FROM question_table WHERE id = ${req.params.id}`;
+        let sql = 'SELECT * FROM question_table';
         connection.query(sql, (err, rows) => {
             if (err) throw err;
             res.send(rows);
