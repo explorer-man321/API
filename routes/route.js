@@ -46,7 +46,7 @@ router.post('/login', async function(req,res) {
                     if(result) {
                         return res.status(200).send({
                             'username':`${rows[0].name}`,
-                            'email':`${rows[0].email}np`
+                            'email':`${rows[0].email}`
                         });
                     }
                     else res.status(404).send({

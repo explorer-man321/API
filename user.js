@@ -7,7 +7,7 @@ const bcrypt = require("bcryptjs");
 const { v4: uuidv4 } = require('uuid');
 
 const app = express();
-const port = process.env.port || 5000;
+const port = process.env.port || 5500;
 
 app.use(bodyparser.json());
 app.use(bodyparser.urlencoded({ extended: false }));    
@@ -16,7 +16,7 @@ app.use(cors({
 }))
 
 const poolconnection = mysql.createPool({
-    host: 'localhost',
+    host: '127.0.0.1',
     user: 'root',
     password: '',
     database: 'user'
